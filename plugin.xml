@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://cordova.apache.org/ns/plugins/1.0"
+    id="com.plugins.urlscheme"
+    version="0.1.0">
+    <name>UrlScheme</name> 
+
+    <!-- ios -->
+    <platform name="ios"> 
+        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+        <array>
+            <dict>
+                <key>CFBundleTypeRole</key>
+                <string>Editor</string>
+                <key>CFBundleURLName</key>
+                <string>com.urlscheme.me</string>
+                <key>CFBundleURLSchemes</key>
+                <array>
+                    <string>urlscheme</string>
+                </array>
+            </dict>
+        </array>
+        </config-file> 
+    </platform>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="AndroidManifest.xml" parent="/manifest/application/activity">
+           <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="urlscheme"/>
+            </intent-filter>
+        </config-file>       
+    </platform>
+</plugin>
